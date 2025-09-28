@@ -1,0 +1,17 @@
+2025-08-11 03:07:12 | ERROR | services.monitoring.logger_config:log_structured:183 | Error: TypeError in {'test': 'monitoring_tests'}
+2025-08-11 03:07:32 | ERROR | services.monitoring.logger_config:log_structured:183 | Error: ValueError in {'test': True, 'error_type': 'intentional'}
+2025-08-11 03:07:32 | ERROR | services.monitoring.logger_config:log_structured:183 | Error: TypeError in {'test': 'monitoring_tests'}
+2025-08-11 03:08:09 | ERROR | services.monitoring.logger_config:log_structured:183 | Error: ValueError in {'test': True, 'error_type': 'intentional'}
+2025-08-11 03:08:09 | ERROR | services.monitoring.logger_config:log_structured:183 | Error: TypeError in {'test': 'monitoring_tests'}
+2025-08-11 03:08:39 | ERROR | services.monitoring.logger_config:log_structured:183 | Error: ValueError in {'test': True, 'error_type': 'intentional'}
+2025-08-11 03:08:39 | ERROR | services.monitoring.logger_config:log_structured:183 | Error: TypeError in {'test': 'monitoring_tests'}
+2025-08-11 03:09:05 | ERROR | services.monitoring.logger_config:log_structured:183 | Error: ValueError in {'test': True, 'error_type': 'intentional'}
+2025-08-11 03:09:05 | ERROR | services.monitoring.logger_config:log_structured:183 | Failed operation: test_context_operation (77.19ms) - type object 'EventType' has no attribute 'BUSINESS_LOGIC'
+2025-08-11 03:09:05 | ERROR | services.monitoring.logger_config:log_structured:183 | Error: AttributeError in {'test': 'monitoring_tests'}
+2025-08-11 03:09:28 | ERROR | services.monitoring.logger_config:log_structured:183 | Error: ValueError in {'test': True, 'error_type': 'intentional'}
+2025-08-11 03:09:29 | ERROR | services.monitoring.logger_config:log_structured:183 | Error: TypeError in {'test': 'monitoring_tests'}
+2025-08-11 03:10:03 | ERROR | services.monitoring.logger_config:log_structured:183 | Error: ValueError in {'test': True, 'error_type': 'intentional'}
+2025-08-11 03:10:03 | ERROR | services.monitoring.logger_config:log_structured:183 | Alert triggered: Background Task Failed: test_background_task
+2025-08-11 03:10:05 | ERROR | services.monitoring.logger_config:log_structured:183 | Error: TypeError in {'test': 'monitoring_tests'}
+2025-08-11 03:10:28 | ERROR | services.monitoring.logger_config:log_structured:183 | Error: ValueError in {'test': True, 'error_type': 'intentional'}
+2025-08-11 03:10:28 | ERROR | services.monitoring.logger_config:log_structured:183 | Alert triggered: Background Task Failed: test_background_task

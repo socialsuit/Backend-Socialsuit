@@ -1,0 +1,54 @@
+{
+  "timestamp": "2025-09-25T15:14:42.207480",
+  "total_duration": 8.263983726501465,
+  "summary": {
+    "total_services": 4,
+    "connected": 0,
+    "failed": 4,
+    "success_rate": 0.0
+  },
+  "performance": {
+    "average_response_time": 2.017106533050537,
+    "total_test_duration": 8.263983726501465
+  },
+  "services": {
+    "postgresql": {
+      "service": "postgresql",
+      "connected": false,
+      "response_time": 4.045280456542969,
+      "error_message": "connection to server at \"localhost\" (::1), port 5432 failed: Connection refused (0x0000274D/10061)\n\tIs the server running on that host and accepting TCP/IP connections?\nconnection to server at \"localhost\" (127.0.0.1), port 5432 failed: Connection refused (0x0000274D/10061)\n\tIs the server running on that host and accepting TCP/IP connections?\n",
+      "connection_info": null,
+      "performance_metrics": null
+    },
+    "mongodb": {
+      "service": "mongodb",
+      "connected": false,
+      "response_time": 0.0002865791320800781,
+      "error_message": "mongodb+srv:// URIs must not include a port number",
+      "connection_info": null,
+      "performance_metrics": null
+    },
+    "redis": {
+      "service": "redis",
+      "connected": false,
+      "response_time": 4.022804260253906,
+      "error_message": "Error 10061 connecting to localhost:6379. No connection could be made because the target machine actively refused it.",
+      "connection_info": null,
+      "performance_metrics": null
+    },
+    "cloudinary": {
+      "service": "cloudinary",
+      "connected": false,
+      "response_time": 5.4836273193359375e-05,
+      "error_message": "Must supply cloud_name",
+      "connection_info": null,
+      "performance_metrics": null
+    }
+  },
+  "recommendations": [
+    "Fix postgresql connection: connection to server at \"localhost\" (::1), port 5432 failed: Connection refused (0x0000274D/10061)\n\tIs the server running on that host and accepting TCP/IP connections?\nconnection to server at \"localhost\" (127.0.0.1), port 5432 failed: Connection refused (0x0000274D/10061)\n\tIs the server running on that host and accepting TCP/IP connections?\n",
+    "Fix mongodb connection: mongodb+srv:// URIs must not include a port number",
+    "Fix redis connection: Error 10061 connecting to localhost:6379. No connection could be made because the target machine actively refused it.",
+    "Fix cloudinary connection: Must supply cloud_name"
+  ]
+}

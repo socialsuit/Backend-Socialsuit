@@ -1,0 +1,74 @@
+{
+  "timestamp": "2025-09-25T15:16:32.958606",
+  "mode": "development",
+  "total_duration": 2.3839383125305176,
+  "summary": {
+    "total_services": 4,
+    "connected": 3,
+    "failed": 1,
+    "success_rate": 75.0
+  },
+  "performance": {
+    "average_response_time": 0.5947515964508057,
+    "total_test_duration": 2.3839383125305176
+  },
+  "services": {
+    "sqlite": {
+      "service": "sqlite",
+      "connected": true,
+      "response_time": 0.05425596237182617,
+      "error_message": null,
+      "connection_info": {
+        "version": "SQLite 3.45.3",
+        "database_path": "C:\\Users\\hhp\\social_suit\\socialsuit.db",
+        "file_size": 8192,
+        "test_records": 1
+      },
+      "performance_metrics": {
+        "query_response_time": 4.792213439941406e-05,
+        "file_based": true
+      }
+    },
+    "mongodb_mock": {
+      "service": "mongodb_mock",
+      "connected": true,
+      "response_time": 0.10047459602355957,
+      "error_message": null,
+      "connection_info": {
+        "mode": "mock",
+        "configured_uri": "mongodb://localhost:27017/socialsuit",
+        "note": "MongoDB not required for basic development"
+      },
+      "performance_metrics": {
+        "mock_response_time": 0.1,
+        "status": "mocked"
+      }
+    },
+    "redis_mock": {
+      "service": "redis_mock",
+      "connected": true,
+      "response_time": 0.050174713134765625,
+      "error_message": null,
+      "connection_info": {
+        "mode": "mock",
+        "configured_url": "redis://localhost:6379",
+        "note": "Redis not required for basic development"
+      },
+      "performance_metrics": {
+        "mock_response_time": 0.05,
+        "status": "mocked"
+      }
+    },
+    "cloudinary": {
+      "service": "cloudinary",
+      "connected": false,
+      "response_time": 2.1741011142730713,
+      "error_message": "Error 401 - unknown api_key",
+      "connection_info": null,
+      "performance_metrics": null
+    }
+  },
+  "recommendations": [
+    "Fix cloudinary connection: Error 401 - unknown api_key"
+  ]
+}

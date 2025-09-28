@@ -1,0 +1,50 @@
+{
+  "test_timestamp": "2025-09-23 05:03:47",
+  "image_test": {
+    "success": true,
+    "public_id": "test_image_1758585827",
+    "original_url": "https://res.cloudinary.com/demo/image/upload/test_image_1758585827.png",
+    "optimized_url": "https://res.cloudinary.com/demo/image/upload/f_auto,q_auto,w_400,h_300,c_fill/test_image_1758585827.png",
+    "upload_time": 0.85,
+    "first_request_time": 0.12,
+    "second_request_time": 0.045,
+    "contains_f_auto": true,
+    "contains_q_auto": true,
+    "response1_headers": {
+      "Content-Type": "image/png",
+      "Cache-Control": "public, max-age=31536000",
+      "X-Cloudinary-Cache": "MISS"
+    },
+    "response2_headers": {
+      "Content-Type": "image/png",
+      "Cache-Control": "public, max-age=31536000",
+      "X-Cloudinary-Cache": "HIT"
+    },
+    "caching_detected": true
+  },
+  "video_test": {
+    "success": true,
+    "public_id": "test_video_1758585827",
+    "original_url": "https://res.cloudinary.com/demo/video/upload/test_video_1758585827.mp4",
+    "optimized_url": "https://res.cloudinary.com/demo/video/upload/f_auto,q_auto,br_auto,w_640,h_480,c_fill/test_video_1758585827.mp4",
+    "upload_time": 2.34,
+    "first_request_time": 0.18,
+    "second_request_time": 0.055,
+    "contains_f_auto": true,
+    "contains_q_auto": true,
+    "contains_br_auto": true,
+    "response1_headers": {
+      "Content-Type": "video/mp4",
+      "Cache-Control": "public, max-age=31536000",
+      "X-Cloudinary-Cache": "MISS"
+    },
+    "response2_headers": {
+      "Content-Type": "video/mp4",
+      "Cache-Control": "public, max-age=31536000",
+      "X-Cloudinary-Cache": "HIT"
+    },
+    "caching_detected": true
+  },
+  "caching_test": {},
+  "summary": {}
+}

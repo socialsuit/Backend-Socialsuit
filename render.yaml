@@ -1,0 +1,74 @@
+services:
+  - type: web
+    name: social-suit-backend
+    env: python
+    plan: starter
+    buildCommand: "pip install -r requirements.txt"
+    startCommand: "uvicorn main:app --host 0.0.0.0 --port $PORT"
+    healthCheckPath: /health
+    envVars:
+      - key: DATABASE_URL
+        fromDatabase:
+          name: social-suit-db
+          property: connectionString
+      - key: REDIS_URL
+        fromService:
+          name: social-suit-redis
+          property: connectionString
+      - key: MONGO_URI
+        fromDatabase:
+          name: social-suit-mongo
+          property: connectionString
+      - key: CLOUDINARY_URL
+        sync: false
+      - key: JWT_SECRET
+        generateValue: true
+      - key: JWT_SECRET_KEY
+        generateValue: true
+      - key: SECRET_KEY
+        generateValue: true
+      - key: SECURITY_PASSWORD_SALT
+        generateValue: true
+      - key: CSRF_SECRET
+        generateValue: true
+      - key: DEEPSEEK_OPENROUTER_API_KEY
+        generateValue: true
+      - key: SENTRY_DSN
+        generateValue: true
+      - key: SENDGRID_API_KEY
+        generateValue: true
+      - key: ENVIRONMENT
+        value: production
+      - key: ALLOWED_ORIGINS
+        value: "https://your-frontend-domain.com"
+      - key: CORS_ALLOW_ORIGINS
+        value: '["https://your-frontend-domain.com"]'
+      - key: API_V1_STR
+        value: "/api/v1"
+      - key: ACCESS_TOKEN_EXPIRE_MINUTES
+        value: "30"
+      - key: REFRESH_TOKEN_EXPIRE_DAYS
+        value: "7"
+      - key: JWT_ALGORITHM
+        value: "HS256"
+      - key: RATE_LIMIT_ENABLED
+        value: "true"
+      - key: RATE_LIMIT_DEFAULT_RPM
+        value: "60"
+      - key: RATE_LIMIT_DEFAULT_BURST
+        value: "10"
+      - key: MAX_UPLOAD_SIZE_MB
+        value: "10"
+      - key: ALLOWED_EXTENSIONS
+        value: "jpg,jpeg,png,gif,svg,pdf,doc,docx,xls,xlsx,ppt,pptx,txt,csv"
+
+databases:
+  - name: social-suit-db
+    databaseName: social_suit
+    user: social_suit_user
+    plan: free
+
+services:
+  - type: redis
+    name: social-suit-redis
+    plan: free

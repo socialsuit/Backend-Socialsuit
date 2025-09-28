@@ -1,0 +1,56 @@
+# FastAPI Core
+fastapi==0.115.6
+uvicorn[standard]==0.32.1
+python-dotenv==1.0.1
+
+# Database
+asyncpg==0.30.0
+pymongo==4.10.1
+motor==3.6.0
+sqlalchemy==2.0.36
+
+# Redis & Caching
+redis==5.2.1
+aioredis==2.0.1
+
+# Authentication & Security
+pydantic==2.10.4
+pydantic-settings==2.7.0
+bcrypt==4.0.1
+cryptography==45.0.3
+python-jose[cryptography]==3.3.0
+passlib[bcrypt]==1.7.4
+
+# HTTP Clients
+httpx==0.28.1
+aiohttp==3.12.2
+requests==2.32.3
+
+# Image & Media Processing
+Pillow==11.0.0
+cloudinary==1.44.0
+
+# Social Media APIs
+google-api-python-client==2.174.0
+google-auth==2.40.3
+google-auth-oauthlib==1.2.2
+tweepy==4.14.0
+
+# Task Queue
+celery[redis]==5.5.3
+flower==2.0.1
+
+# Blockchain/Web3
+web3==7.6.0
+eth-account==0.13.7
+
+# Utilities
+python-multipart==0.0.20
+email-validator==2.2.0
+Jinja2==3.1.4
+python-dateutil==2.9.0.post0
+
+# Development
+pytest==8.3.4
+pytest-asyncio==0.25.0
+coverage==7.8.0

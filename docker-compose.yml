@@ -1,0 +1,122 @@
+version: '3.8'
+
+services:
+  # FastAPI application
+  social-suit-app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - .:/app
+      - ../shared:/shared
+    ports:
+      - "8000:8000"
+    depends_on:
+      - social-suit-postgres
+      - social-suit-redis
+      - social-suit-mongo
+    environment:
+      - DATABASE_URL=postgresql://postgres:postgres@social-suit-postgres:5432/social_suit
+      - MONGO_URI=mongodb://mongo:mongo@social-suit-mongo:27017/social_suit
+      - REDIS_URL=redis://social-suit-redis:6379/0
+      - JWT_SECRET=dev_jwt_secret
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/healthz"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+    restart: unless-stopped
+
+  # Celery worker
+  social-suit-worker:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - .:/app
+      - ../shared:/shared
+    depends_on:
+      - social-suit-app
+      - social-suit-redis
+    environment:
+      - DATABASE_URL=postgresql://postgres:postgres@social-suit-postgres:5432/social_suit
+      - MONGO_URI=mongodb://mongo:mongo@social-suit-mongo:27017/social_suit
+      - REDIS_URL=redis://social-suit-redis:6379/0
+      - JWT_SECRET=dev_jwt_secret
+    command: celery -A app.worker.celery worker --loglevel=info
+    restart: unless-stopped
+
+  # Celery beat for scheduled tasks
+  social-suit-beat:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - .:/app
+      - ../shared:/shared
+    depends_on:
+      - social-suit-app
+      - social-suit-redis
+    environment:
+      - DATABASE_URL=postgresql://postgres:postgres@social-suit-postgres:5432/social_suit
+      - MONGO_URI=mongodb://mongo:mongo@social-suit-mongo:27017/social_suit
+      - REDIS_URL=redis://social-suit-redis:6379/0
+      - JWT_SECRET=dev_jwt_secret
+    command: celery -A app.worker.celery beat --loglevel=info
+    restart: unless-stopped
+
+  # PostgreSQL database
+  social-suit-postgres:
+    image: postgres:13
+    volumes:
+      - social-suit-postgres-data:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=social_suit
+    ports:
+      - "5432:5432"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    restart: unless-stopped
+
+  # Redis for caching and Celery broker
+  social-suit-redis:
+    image: redis:6
+    volumes:
+      - social-suit-redis-data:/data
+    ports:
+      - "6379:6379"
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    restart: unless-stopped
+
+  # MongoDB for document storage
+  social-suit-mongo:
+    image: mongo:4.4
+    volumes:
+      - social-suit-mongo-data:/data/db
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=mongo
+      - MONGO_INITDB_ROOT_PASSWORD=mongo
+      - MONGO_INITDB_DATABASE=social_suit
+    ports:
+      - "27017:27017"
+    healthcheck:
+      test: echo 'db.runCommand("ping").ok' | mongo localhost:27017/test --quiet
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    restart: unless-stopped
+
+volumes:
+  social-suit-postgres-data:
+  social-suit-redis-data:
+  social-suit-mongo-data:

@@ -1,0 +1,4 @@
+This directory contains Alembic migration scripts.
+
+Migration scripts are generated using the `alembic revision --autogenerate` command.
+Each file represents a database schema change that can be applied or reverted.
